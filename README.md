@@ -1,75 +1,53 @@
-# LLM Classification Benchmark 🚀
+# LLM Text Classification Benchmark
 
-This repository provides an **automated benchmarking pipeline** to evaluate Large Language Models (LLMs) on **popular text classification datasets** using the OpenAI API.
+This repository contains an automated benchmarking script to evaluate Large Language Models (LLMs) on multiple **text classification datasets**.
 
-The framework is designed to be:
-- ✅ Fully automated
-- ⚡ Asynchronous (fast & scalable)
-- 🧠 Dataset-agnostic
-- 📊 Accuracy-focused
+The benchmark is designed to be:
+- Fully automated
+- Dataset-agnostic
+- Async and rate-limited
+- Easy to extend with new datasets or models
 
 ---
 
 ## 🔍 What This Project Does
 
-For each dataset, the script:
-1. Automatically downloads the dataset from Hugging Face
-2. Detects the input text and label columns
-3. Samples a fixed number of examples
-4. Dynamically generates a task-specific system prompt
-5. Runs multiple LLMs asynchronously
-6. Computes classification accuracy
-7. Prints consolidated benchmark results
-
-No manual preprocessing. No dataset-specific hacks.
+- Downloads datasets directly from Hugging Face
+- Automatically detects text and label columns
+- Samples a configurable number of examples
+- Runs LLM inference asynchronously
+- Computes classification accuracy
+- Produces a consolidated results summary
 
 ---
 
-## 📚 Supported Task Types
+## 📊 Benchmarked Datasets
 
-- Binary sentiment classification
-- Multi-class topic classification
-- Emotion classification
-- Intent classification
-- Natural Language Inference (NLI)
-
-⚠️ QA and RAG-style datasets (e.g., HotpotQA) are intentionally excluded.
-
----
-
-## 🧪 Benchmarked Datasets
-
-| Dataset | Task Type |
-|-------|----------|
-| `stanfordnlp/imdb` | Movie sentiment (binary) |
-| `ag_news` | News topic classification |
-| `yelp_polarity` | Review sentiment |
-| `dbpedia_14` | Entity/topic classification |
-| `dair-ai/emotion` | Emotion classification |
-| `amazon_polarity` | Product review sentiment |
-| `banking77` | Intent classification |
-| `snli` | Natural Language Inference |
-| `yahoo_answers_topics` | Question topic classification |
-
-All datasets are:
-- Public
-- Classification-only
-- Plug-and-play via Hugging Face
+| Dataset | Task |
+|------|------|
+| stanfordnlp/imdb | Movie review sentiment (binary) |
+| ag_news | News topic classification (4-class) |
+| yelp_polarity | Yelp sentiment (binary) |
+| dbpedia_14 | Topic classification (14-class) |
+| dair-ai/emotion | Emotion classification (6-class) |
+| amazon_polarity | Product review sentiment |
+| banking77 | Banking intent classification |
+| snli | Natural language inference |
+| tweet_eval_sentiment | Tweet sentiment |
+| yahoo_answers_topics | Topic classification |
 
 ---
 
-## 🧠 Models Evaluated
+## ⚙️ Models Evaluated
 
-| Logical Name | Model ID |
-|-------------|----------|
-| gpt-5.2 | gpt-5.2 |
-| gpt-5-mini | gpt-5-mini |
+- gpt-5.2  
+- gpt-5-mini  
 
-(Replace model IDs if needed.)
+(Models are configurable in the script.)
 
 ---
 
-## ⚙️ How It Works (High Level)
+## 🚀 How to Run (Colab)
 
-```text
-Dataset → Sample → Prompt → Async API Calls → Accuracy → Results
+1. Open the notebook in Google Colab
+2. Set your OpenAI API key in Colab Secrets as:
